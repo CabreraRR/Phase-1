@@ -7,24 +7,28 @@ In this module you'll learn to use just enough of Git and GitHub to create a new
 
 ## Skills
 
-- [ ] Can understand and configure your global git config `~/.gitconfig`
-	- 
-- [ ] Can globally ignore commonly ignored file patterns in a global `.gitignore` file
-	- 
-- [ ] Can clone a Git repository
-	- 
-- [ ] Can initialize a new Git repository
-	- 
-- [ ] Can create a repository on GitHub
-	- 
-- [ ] Can use `git add`
-	- 
-- [ ] Can use `git commit`
-	- 
-- [ ] Can use `git push`
-	- 
-- [ ] Can install and use the `hub` command
-	- 
+- [x] Can understand and configure your global git config `~/.gitconfig`
+	- `git config --global`
+- [x] Can globally ignore commonly ignored file patterns in a global `.gitignore` file
+	- git ignore will ignore specific directories/files within the repository. A common directory that would be ignored is `node_module` 
+- [x] Can clone a Git repository
+	- `git clone *REPOSITORY LINK*` will clone the following repository
+	```bash
+	14:46:34  hellaboredguy projects -> git clone https://github.com/CabreraRR/Phase-1.git
+	```
+- [x] Can initialize a new Git repository
+	- `git init` this command will initialize a local git repository
+- [x] Can create a repository on GitHub
+	- click on the create repository on the github website and name the repository
+- [x] Can use `git add`
+	- `git add *FILE/DIRECTORY*` this will add individual files/directories to the commit
+	-`git add .` will add all files not being tracked by the repository and add them to the commit
+- [x] Can use `git commit`
+	- `git commit -m "MESSAGE ABOUT COMMIT"` combine all those added to the commit into one commit with a message pertaining to the commit
+- [x] Can use `git push`
+	- `git push` will push all the commits logged to the repository branch currently being worked on locally
+- [x] Can install and use the `hub` command
+	- hub just makes it easier to manage git to github from the command line
 
 ## Glossary of Terms
 

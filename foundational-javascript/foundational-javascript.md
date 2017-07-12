@@ -171,45 +171,63 @@ before moving on from this module.
 	beltsize++;
 	};
 	```
-- [ ] Can use `Array#map` in JavaScript
+- [x] Can use `Array#map` in JavaScript
 	- ```javascript
-	
+	var num = [1, 4, 9]
+	var roots = num.map(Math.sqrt)
 	```
-- [ ] Can use `Array#filter` in JavaScript
+- [x] Can use `Array#filter` in JavaScript
 	- ```javascript
-	
+	var ages= [12, 80, 40, 16, 2, 100, 40];
+	function adultCheck(age){
+		return age >=18;
+	};
+	return ages.filter(adultCheck);
 	```
-- [ ] Can use `Array#reduce` in JavaScript
+- [x] Can use `Array#reduce` in JavaScript
 	- ```javascript
-	
+	var tacosDelivered = [2, 15, 7, 40, 1000000];
+	function taco (){
+		return total + taco;
+	};
+	return tacosDelivered.reduce(taco);
 	```
 - [x] Can declare local vs. global variables in JavaScript
 	- a local variable is a variable that is defined within the function while a global variable is declared outside of all functions.
-- [ ] Can get all the keys on a JavaScript object
+- [x] Can get all the keys on a JavaScript object
 	- ```javascript
-	
+	Object.keys(obj);
 	```
-- [ ] Can get all the values on a JavaScript object
+- [x] Can get all the values on a JavaScript object
 	- ```javascript
-	
+	Object.values(obj);
 	```
 - [ ] Can write a closure in JavaScript
 	- ```javascript
-	
+	function fullName(firstName, lastname){
+		var intro = "Your name is ";
+		function makeFullName(){
+			return intro + firstName + lastName;
+		};
+		return makeFullName;
+	};
+	fullName("Steve", "Buscemi");
 	```
 - [ ] Can pass multiple objects into a function using a plain object as a single argument, in JavaScript
 	- ```javascript
 	
 	```
-- [ ] Can describe lexical scope inheritance in JavaScript
-	- 
-- [ ] Can split a string into an array in JavaScript
+- [x] Can describe lexical scope inheritance in JavaScript
+	- lexical scope is when a variable is defined nested within a function and can be called upon by any function nested within that function.
+- [x] Can split a string into an array in JavaScript
 	- ```javascript
-	
+	var string = "this is a string";
+	return string.split(" ");
 	```
-- [ ] Can join an array into a string in JavaScript
+- [x] Can join an array into a string in JavaScript
 	- ```javascript
-	
+	var arr = ['this', 'is', 'an', 'array'];
+	return arr.join(" ");
 	```
 
 

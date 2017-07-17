@@ -1,4 +1,7 @@
-let allContacts = []
+var allContacts = [];
+var failedContacts = [];
+var errorCount = 0;
+
 if (!String.prototype.padEnd) {
 	String.prototype.padEnd = function padEnd(targetLength, padString) {
 		targetLength = targetLength >> 0; //floor if number or convert non-number to 0;
@@ -15,26 +18,42 @@ if (!String.prototype.padEnd) {
 	};
 }
 
+
 const addContact = function (firstName, lastName, email) {
-	allContacts.push({
-		fullName: firstName + " " + lastName,
-		email: email
-	});
+	if (typeof firstName === 'string' && typeof lastName === 'string' && typeof email === 'string') {
+		allContacts.push({
+			fullName: firstName + " " + lastName,
+			email: email
+		});
+		return true;
+	} else {
+		failedContacts.push({
+			fullName: firstName + " " + lastName,
+			email: email
+		});
+		throw new Error('not a string');
+	}
 }
+
 
 const addContacts = function (contactData) {
 	console.log('Loading contacts...');
-	for (var i = 0; i < contactData.length; i++) {
-		addContact(contactData[i].first_name, contactData[i].last_name, contactData[i].email);
-	}
+	contactData.forEach(item => {
+		try {
+			addContact(item.first_name, item.last_name, item.email);
+		} catch (e) {
+			errorCount++;
+		}
+	});
 	console.log('...contacts have been loaded');
 }
 
 const printContacts = function (contacts) {
+
 	console.log('All Contacts:');
-	console.log('|-------------------------|-----------------------------------|');
+	console.log('|-------------------------+-----------------------------------|');
 	console.log('| Full Name               | Email                             |');
-	console.log('|-------------------------|-----------------------------------|');
+	console.log('|-------------------------+-----------------------------------|');
 
 	contacts.sort(function (a, b) {
 		if (a.fullName < b.fullName) return -1;
@@ -42,14 +61,18 @@ const printContacts = function (contacts) {
 		return 0;
 	})
 
-	for (var i = 0; i < contacts.length; i++) {
-		var name = '| ' + contacts[i].fullName;
-		var contact = '| ' + contacts[i].email;
+	contacts.forEach(contacts => {
+		let name = '| ' + contacts.fullName;
+		let contact = '| ' + contacts.email;
 		console.log(name.padEnd(26) + contact.padEnd(36) + '|');
-	}
-	console.log('|-------------------------|-----------------------------------|');
-}
+	});
 
+	console.log('|-------------------------+-----------------------------------|');
+	console.log('Could not import ' + errorCount + ' contacts');
+	failedContacts.forEach(item => {
+		console.log('unable to import ' + item.fullName + ' ' + item.email);
+	});
+}
 ///////////////////////////////////////////////////////////////////////////
 
 addContacts([{
@@ -57,7 +80,7 @@ addContacts([{
 	"last_name": "Vibert",
 	"email": "tvibert0@illinois.edu"
 }, {
-	"first_name": "Tova",
+	"first_name": 55,
 	"last_name": "Myall",
 	"email": "tmyall1@instagram.com"
 }, {
@@ -71,7 +94,7 @@ addContacts([{
 }, {
 	"first_name": "Virgina",
 	"last_name": "Cankett",
-	"email": "vcankett4@washington.edu"
+	"email": true
 }, {
 	"first_name": "Mateo",
 	"last_name": "Da Costa",
@@ -106,7 +129,7 @@ addContacts([{
 	"email": "dbockingc@comcast.net"
 }, {
 	"first_name": "Willdon",
-	"last_name": "Hedley",
+	"last_name": 22,
 	"email": "whedleyd@purevolume.com"
 }, {
 	"first_name": "Charil",
@@ -132,5 +155,5 @@ addContacts([{
 	"first_name": "Winston",
 	"last_name": "Hixley",
 	"email": "whixleyj@homestead.com"
-}])
+}]);
 printContacts(allContacts)
